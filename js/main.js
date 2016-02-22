@@ -1,12 +1,15 @@
 
 //global variables//
 
-var lives; 
+var lives = 5; 
 var guess;
-var correctguess;
+var correctguess = 0;
 var wrongguess = 0;
-var storeGuess = [];
-
+var splitArray;
+var randomWordArray = [];
+var newArray = '';
+var letterClicked;
+var match;
 
 
 var commonWords = [
@@ -33,7 +36,7 @@ var livesDisplay = document.getElementById("lives");
 var word = document.getElementById("word");
 var buttonsContainer = document.getElementById('buttons');
 var buttonsHolder = document.getElementsByClassName('buttonsHolder')
-var buttons = document.getElementsByClassName('btn');
+
 
 
 
@@ -51,16 +54,23 @@ function underscorePlaceholder(randomWord) {
 	
 	for (var i = 0; i < randomWord.length; i++) {
 		wordcontainer.id = 'word-container';
+
 		wordplaceholder = document.createElement('li');
-		wordplaceholder.id = 'placeholder';
+
+		wordplaceholder.setAttribute('id', 'letter- ' + i, 'class', 'underscore');
 		wordcontainer.setAttribute('class', 'list-inline'); // BS class styling
+		randomWordArray.push(randomWord[i]);
+		newArray = randomWordArray.join('');
+		console.log(newArray);
+		
 		wordplaceholder.innerHTML = '_';
-
-
 
 		word.appendChild(wordcontainer);
 		wordcontainer.appendChild(wordplaceholder);
+		
 	}
+
+
 	
 }
 underscorePlaceholder(randomWord);
@@ -80,16 +90,18 @@ function createAlphabetButtons() {
       buttons = document.createElement('li');
       
       buttons.innerHTML = alphabet[i];
-      buttons.setAttribute('class',  'btn btn-default');
+      buttons.setAttribute('class',  'btn');
       
       buttonsContainer.appendChild(buttonsHolder);
       buttonsHolder.appendChild(buttons);
+
+
     }
   }
 
   createAlphabetButtons();
 
-buttons = document.getElementsByClassName('btn');
+var buttons = document.getElementsByClassName('btn');
 console.log(buttons);
 
 // loops through button class adds click listener
@@ -99,36 +111,81 @@ for (var i = 0; i < buttons.length; i++ ) {
 }
 
 
+
+// var splitArray = newArray.split('');
+// if (splitArray.indexOf(letterClicked) == -1) {
+//   		lives--;
+//   		console.log(lives);
+
+//   	}
+
+
 function buttonEventHandler() {
-  	var letterClicked = this.innerHTML;
- 	console.log(letterClicked);
+  	letterClicked = this.innerHTML;
   	
-  }
+
+	for (var i =0; i < randomWordArray.length; i++) {
+
+  		if (letterClicked == randomWordArray[i]) {
+  			match = document.getElementById('letter- ' + i);
+  			match.innerHTML = letterClicked;
+  			correctguess++;
+  			document.getElementById('sound3').play();
+  			
+		}  
 
 
-//display lives left
-function showLives(){
-	livesDisplay.innerHTML = 'You have ' + lives + ' lives';
+ 		//if (randomWordArray.length == correctguess) {
 
-	if (lives < 1) {
-		livesDisplay.innerHTML = 'GAME OVER'
+  			//livesDisplay.innerHTML = 'YOU WIN!';
+  		//}
+  		
+  	}
+
+ 	if (randomWordArray.indexOf(letterClicked) == -1) {
+  		lives--;
+  		document.getElementById('sound4').play();
+  		
+  	}
+  	
+
+
+  		
+  		
+  		
+displayLives();
+}
+  
+
+
+function displayLives() {
+
+livesDisplay.setAttribute('class', 'livesDisplay');
+livesDisplay.innerHTML = 'You have ' + lives + ' lives';
+
+
+if (lives == 0) {
+			livesDisplay.innerHTML = 'GAME OVER: the word was ' + randomWordArray;
+			document.getElementById('sound2').play();
 	}
+if (lives == 1) {
+  	document.getElementById('sound5').play();
 
-	for(var i=0; i < guess; i++) {
-		if (correctguess.length === guess.length) {
-			livesDisplay.innerHTML = "YOU WIN!";
-		}
-	}
+  		}
+if (randomWordArray.length == correctguess) {
 
+  			livesDisplay.innerHTML = 'YOU WIN!';
+  			document.getElementById('sound7').play();
+  		}
 
 }
-showLives();
+
+displayLives();
 
 
-buttons.onclick = function() {
-	var guess = (this.innerHTML);
-	this.s
-}
+
+
+
 
 
     

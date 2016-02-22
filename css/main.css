@@ -1,19 +1,54 @@
-body {
-  
+* {
+  background-color: rgb(146, 146, 254);
+  font-family: SuperPlumberBrothers;
+  font-size: 40px;
+}
+
+@font-face {
+  font-family: SuperPlumberBrothers;
+  src: "http://www.fontspace.com/jackster-productions/super-plumber-brothers?text=&fontsize=80&foreground=000000&background=FFFFFF";
+}
+
+.container h1 {
+  margin-top: 30px;
+  font-size: 70px;
+  display: inline-block;
+
+}
+.livesDisplay {
+  font-size: 30px;
+
+}
+
+.word-container li {
+  font-size: 30px;
+}
+.btn {
+  float:left;
+  margin: 10px 10px 10px 10px;
+  list-style: none;
+  width:40px;
+  height:40px;
+  padding-top:15px;
+  font-size: 40px;
+  background-color: rgb(217, 109, 1);
+  border: solid 1px black;
+}
+
+.btn:hover {
+  background-color: gray;
+  color: white;
 }
 
 
 
 
+.footer {
+  padding: 0px;
+}
 
-#alphabet li {
-  float:left;
-  margin: 0 10px 10px 0;
-  list-style:none;
-  width:35px;
-  height:30px;
-  padding-top:10px;
-  background: white;
-  
-  border: solid 1px $white;
+.footer img{
+  width: 1300px;
+
+}
     

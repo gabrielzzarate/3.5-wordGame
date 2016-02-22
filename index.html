@@ -8,15 +8,35 @@
 	
 </head>
 <body>
+	<audio src="images/background-mario-music.wav" type="audio/wav" autoplay="true" preload="auto"></audio>
+	<audio id="sound2" src="images/mario-gamover.wav" type="audio/wav"></audio>
+	<audio id="sound3" src="images/mario-coin.wav" type="audio/wav"></audio>
+	<audio id="sound4" src="images/mario-bump.wav" type="audio/wav"></audio>
+	<audio id="sound5" src="images/mario-running-out-of-time.wav" type="audio/wav"></audio>
+	<audio id="sound6" src="images/mario-dies.wav" type="audio/wav"></audio>
+	<audio id="sound7" src="images/mario-you-win.wav" type="audio/wav"></audio>
+
 	<div class = "container col-md-8 col-md-offset-2">
-		<h1>Mario Word Game</h1>
+		<div class= "row">
+			<div class="col-md-12">
+				<h1>Mario Word Game</h1>
+			</div>
+		</div>
+	<div id= "images col-md-4 col-md-offset-5">
+		<img class="cloud col-md-offset-9" src="images/mario-cloud.png" alt="">
+	</div>
 		<p id="lives"></p>
 		<p id="word"></p>
 		<div id = "buttons"></div>
 			
-		
+	
 	</div>
 	
+	<div class="row">
+		<div class="col-md-12">
+		<img src="images/mario-horizon.png" alt="">
+	</div>
+	</div>
 
 	<script src="js/main.js"></script> 
 	 
